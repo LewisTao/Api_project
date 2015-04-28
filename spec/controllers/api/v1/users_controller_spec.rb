@@ -97,4 +97,10 @@ describe Api::V1::UsersController do
 
 		it { should respond_with 204 }
 	end
+
+	describe "GET #index" do
+		before(:each) do
+			get :index, format: :json
+		end
+	end
 end
