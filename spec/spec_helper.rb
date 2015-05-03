@@ -68,4 +68,5 @@ RSpec.configure do |config|
   config.before(:each, type: :controller) do
     include_deafult_accept_headers
   end
+
 end
