@@ -4,10 +4,17 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  # Validattion attributes
   validates_uniqueness_of :auth_token
 
+  # Association
+  has_many :products, dependent: :destroy
+
+  
+  # Action filter
   before_create :generate_authentication_token!
 
+  # Specify new method
   def generate_authentication_token!
   	begin
   		self.auth_token = Devise.friendly_token
