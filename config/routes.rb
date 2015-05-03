@@ -5,6 +5,7 @@ ApiProject::Application.routes.draw do
     scope module: :v1, constraints: ApiConstraints.new(version:1, default: false) do
     	resources :users, except: [:edit]
     	resources :sessions, only: [:create, :destroy]
+    	resources :products, only: [:show, :index]
     end
   end
   devise_for :users
