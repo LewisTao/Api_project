@@ -54,7 +54,7 @@ describe Api::V1::UsersController do
 	describe "PUT/PATCH #update" do
 		before(:each) do
 			@user = FactoryGirl.create :user
-			request.headers['Authorization'] = @user.auth_token
+			api_authorization_header(@user.auth_token)
 		end
 		context "when is successfully update" do
 			before(:each) do
