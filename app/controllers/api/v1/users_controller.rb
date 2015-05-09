@@ -3,10 +3,11 @@ class Api::V1::UsersController < ApplicationController
 	respond_to :json
 
 	def index
-		users = User.all.order('created_at DESC')
-
-		respond_with users
+		products = params[:product_ids].present? ? Product.find(params[:product_ids]) : Product.all
+    	
+    	respond_with products
 	end
+	
 	def show
 		user = User.find(params[:id])
 

@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe Api::V1::UsersController do
 
+	# Show action
 	describe "GET #show" do
 		before(:each) do
 			@user = FactoryGirl.create :user
@@ -13,9 +14,15 @@ describe Api::V1::UsersController do
 			expect(user_response[:email]).to eql @user.email
 		end
 
+		it 'has the product ids as an embeded object' do
+			user_response = json_response[:user]
+			expect(user_response[:product_ids]). to eql []
+		end
+
 		it { should respond_with 200 }
 	end
 
+	# Create action
 	describe "POST #create" do
 		context "when is successfully created" do 
 			before(:each) do
@@ -51,6 +58,7 @@ describe Api::V1::UsersController do
 		end
 	end
 
+	# Update action
 	describe "PUT/PATCH #update" do
 		before(:each) do
 			@user = FactoryGirl.create :user
@@ -88,6 +96,7 @@ describe Api::V1::UsersController do
 		end
 	end
 
+	# Destroy action
 	describe "DELETE #destroy" do
 		before(:each) do
 			@user = FactoryGirl.create :user
@@ -98,6 +107,7 @@ describe Api::V1::UsersController do
 		it { should respond_with 204 }
 	end
 
+	# Index action
 	describe "GET #index" do
 		before(:each) do
 			get :index
