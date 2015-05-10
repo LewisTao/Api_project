@@ -3,15 +3,15 @@ class Api::V1::UsersController < ApplicationController
 	respond_to :json
 
 	def index
-		products = params[:product_ids].present? ? Product.find(params[:product_ids]) : Product.all
+		users = User.all
     	
-    	respond_with products
+    	render json: users
 	end
 	
 	def show
 		user = User.find(params[:id])
 
-		respond_with user
+		render json: user
 	end
 
 	def create

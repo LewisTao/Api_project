@@ -6,4 +6,6 @@ class Product < ActiveRecord::Base
 	# Association
 	belongs_to :user
 
+	# Search by keyword
+	scope :filter_by_title, lambda {|keyword| where("lower(title) LIKE ?", "%#{keyword.downcase}%")}
 end

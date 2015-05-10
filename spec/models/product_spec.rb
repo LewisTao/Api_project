@@ -20,4 +20,31 @@ describe Product do
 
 	# Association test
 	it { should belong_to :user }
+
+	# Search by keyword
+	describe 'filter by title' do
+		before(:each) do
+			@product1 = FactoryGirl.create :product, title: 'A plasma TV'
+			@product2 = FactoryGirl.create :product, title: 'Fastest Laptop'
+			@product3 = FactoryGirl.create :product, title: 'CD player'
+			@product4 = FactoryGirl.create :product, title: 'LCD TV'
+		end
+
+		context 'when a TV title pattern is sent' do
+			it 'returns the 2 products matching' do
+				expect(Product.filter_by_title('TV')).to have(2).time
+			end
+
+			it 'returns the products matching' do
+				expect(Product.filter_by_title('TV').sort).to match_array([@product1, @product4])
+			end
+		end
+	end
+
+	# Search by price
+	describe ' above or equal to price' do
+		before(:each): do
+			
+		end
+	end
 end

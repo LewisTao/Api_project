@@ -1,10 +1,9 @@
 class UserSerializer < ActiveModel::Serializer
   # Basic attributes
-  attributes :id, :email, :created_at, :updated_at, :auth_token
+  attributes :id, :email
 
   # Embed products id to user json response
-  embed :ids
-
   # Association
   has_many :products
+  embed :ids, include: true
 end

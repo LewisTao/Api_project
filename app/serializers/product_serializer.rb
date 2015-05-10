@@ -3,5 +3,5 @@ class ProductSerializer < ActiveModel::Serializer
   attributes :id, :title, :price, :published
 
   # Association
-  has_one :user
+  #belongs_to :user, embed: :ids
 end
