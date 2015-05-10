@@ -5,6 +5,8 @@ class Product < ActiveRecord::Base
 
 	# Association
 	belongs_to :user
+	has_many :placements
+	has_many :orders, through: :placements
 
 	# Search by keyword
 	scope :filter_by_title, lambda {|keyword| where("lower(title) LIKE ?", "%#{keyword.downcase}%")}

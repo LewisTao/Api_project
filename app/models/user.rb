@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
 
   # Association
   has_many :products, dependent: :destroy
+  has_many :orders
 
   
   # Action filter
