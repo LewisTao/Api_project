@@ -5,5 +5,4 @@ class UserSerializer < ActiveModel::Serializer
   # Embed products id to user json response
   # Association
   has_many :products
-  embed :ids, include: true
 end
