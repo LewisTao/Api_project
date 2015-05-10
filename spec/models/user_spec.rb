@@ -22,6 +22,7 @@ describe User do
 
 	# Association
 	it { should have_many(:products) }
+	it { should have_many(:order) }
 
 	# Generate token
 	describe 'generate_authentication_token!' do
