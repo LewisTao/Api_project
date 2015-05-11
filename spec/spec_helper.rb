@@ -2,6 +2,7 @@
 ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
+require 'email_spec'
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
@@ -68,5 +69,9 @@ RSpec.configure do |config|
   config.before(:each, type: :controller) do
     include_deafult_accept_headers
   end
+
+  # Mailer config
+  config.include(EmailSpec::Helpers)
+  config.include(EmailSpec::Matchers)
 
 end
