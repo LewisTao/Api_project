@@ -5,7 +5,14 @@ class Order < ActiveRecord::Base
   has_many :products, through: :placements
 
   # Basic validate
-  validates_presence_of :user_id, :total
-  validates_numericality_of :total, greater_than_or_equal_to: 0
+  #validates_presence_of :user_id, :total
+  #validates_numericality_of :total, greater_than_or_equal_to: 0
+
+  # Before filter
+  before_validation :set_total!
+
+  def set_total!
+  	self.total = products.map(&:price).sum
+  end
 
 end

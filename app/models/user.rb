@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
 
   # Validattion attributes
   validates_uniqueness_of :auth_token
+  
 
   # Association
   has_many :products, dependent: :destroy
